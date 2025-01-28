@@ -1,4 +1,3 @@
-AUGMENTATION: Flase
 IMAGE_SIZE: [224, 224, 3] # as per VGG 16 model
 BATCH_SIZE: 1
 INCLUDE_TOP: False
