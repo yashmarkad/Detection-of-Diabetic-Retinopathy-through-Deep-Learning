@@ -13,7 +13,7 @@ class PredictionPipeline:
             3: 'Severe',
             4: 'Proliferate_DR'
         }
-        self.model = load_model(os.path.join("artifacts", "training", "model.h5"))
+        self.model = load_model(os.path.join("model", "model.h5"))
 
     def predict_label(self):
         test_image = image.load_img(self.filename, target_size=(224, 224))
