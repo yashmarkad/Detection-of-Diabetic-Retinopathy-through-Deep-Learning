@@ -17,7 +17,7 @@ class PrepareBaseModel:
             include_top=self.config.params_include_top
         )
 
-        # Set the base model to non-trainable
+        
         self.model.trainable = False
 
         self.save_model(path=self.config.base_model_path, model=self.model)
