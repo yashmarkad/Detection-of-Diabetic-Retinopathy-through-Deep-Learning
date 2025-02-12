@@ -16,11 +16,20 @@ class PredictionPipeline:
         self.model = load_model(os.path.join("model", "model.h5"))
 
     def predict_label(self):
+        # Load and preprocess image
         test_image = image.load_img(self.filename, target_size=(224, 224))
         test_image = image.img_to_array(test_image) / 255.0
         test_image = test_image.reshape(1, 224, 224, 3)
 
-        predict_x = self.model.predict(test_image)
-        classes_x = np.argmax(predict_x, axis=1)
-
-        return self.verbose_name[classes_x[0]]
+        # Get prediction probabilities
+        predictions = self.model.predict(test_image)
+        
+        # Get class and confidence
+        predicted_class_idx = np.argmax(predictions)
+        confidence = np.max(predictions) * 100  # Convert to percentage
+        
+        # Format output string
+        return (
+            f"{self.verbose_name[predicted_class_idx]} "
+            f"with confidence of {confidence:.2f}%"
+        )
