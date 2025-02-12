@@ -28,7 +28,6 @@ class PredictionPipeline:
         predicted_class_idx = np.argmax(predictions)
         confidence = np.max(predictions) * 100  # Convert to percentage
         
-        # Format output string
         return (
             f"{self.verbose_name[predicted_class_idx]} "
             f"with confidence of {confidence:.2f}%"
